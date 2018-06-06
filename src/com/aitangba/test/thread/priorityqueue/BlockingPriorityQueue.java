@@ -31,6 +31,7 @@ public class BlockingPriorityQueue<E> {
     }
 
     public boolean offer(E e)  {
+        putLock.tryLock();
         if (e == null) {
             throw new NullPointerException();
         }

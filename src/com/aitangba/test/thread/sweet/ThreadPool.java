@@ -5,7 +5,10 @@ package com.aitangba.test.thread.sweet;
  */
 public interface ThreadPool {
 
-    boolean isShutdown();
+    void execute(Request command);
 
     void onJobFinished();
+
+    void shutdown();
+
 }

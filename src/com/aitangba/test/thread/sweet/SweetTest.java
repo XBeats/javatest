@@ -1,5 +1,7 @@
 package com.aitangba.test.thread.sweet;
 
+import java.util.concurrent.Executors;
+
 /**
  * Created by fhf11991 on 2017/6/9.
  */
@@ -31,6 +33,7 @@ public class SweetTest {
 //        SweetLog.d(TAG, "尝试关闭线程池");
 //        threadManager.shutdown();
         testRequest();
+        Executors.newCachedThreadPool();
     }
 
     public static void testRequest() {
