@@ -1,5 +1,6 @@
 package com.aitangba.test.gson;
 
+import com.aitangba.test.gson.custom.ReflectiveTypeAdapterFactory;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -29,7 +30,7 @@ public class JsonUtils {
                 .registerTypeAdapter(Boolean.class, new BooleanTypeAdapter())
                 .registerTypeHierarchyAdapter(List.class, new ListJsonDeserializer())
                 .create();
-
+        ReflectiveTypeAdapterFactory.init(gson);
         return gson;
     }
 
