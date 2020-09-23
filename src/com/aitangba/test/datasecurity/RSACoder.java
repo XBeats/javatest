@@ -21,7 +21,6 @@ public class RSACoder extends Coder {
     /**
      * RSA密钥
      */
-    public static final String RSA_PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgFGdDEn7ZPGVk8OOrnakY9Z+N8D9GF3o29rX/tnFj+iSbZw+h7tLQmWaMZOvi+UIfDQGMZgosnSN6eEIXtNtUWo0anWuiLx0S/U6dDTuTHFxLU+5pLiWUa4hk+bOGTxAszv5PJ3j2ye51n/3TPOCY1TciJa6BJ1+8KRFv9ejOWwIDAQAB";
     public static final String KEY_ALGORITHM = "RSA";
     public static final String SIGNATURE_ALGORITHM = "MD5withRSA";
 
