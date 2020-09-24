@@ -144,12 +144,15 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
             }
 
             @Override
-            void read(JsonReader reader, Object value)
+            boolean read(JsonReader reader, Object value)
                     throws IOException, IllegalAccessException {
                 Object fieldValue = typeAdapter.read(reader);
                 if (fieldValue != null || !isPrimitive) {
                     field.set(value, fieldValue);
+                    return true;
                 }
+
+                return false;
             }
 
             @Override
@@ -248,7 +251,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
 
         abstract void write(JsonWriter writer, Object value) throws IOException, IllegalAccessException;
 
-        abstract void read(JsonReader reader, Object value) throws IOException, IllegalAccessException;
+        abstract boolean read(JsonReader reader, Object value) throws IOException, IllegalAccessException;
 
         abstract void initField(Object value) throws IOException, IllegalAccessException;
 
@@ -286,8 +289,8 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
                     BoundField field = boundFields.get(name);
                     if (field == null || !field.deserialized) {
                         in.skipValue();
-                    } else {
-                        field.read(in, instance);
+                    } else if(field.read(in, instance)) {
+                        initBoundFields.remove(field);
                     }
                 }
             } catch (IllegalStateException e) {
